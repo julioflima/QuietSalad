@@ -8,7 +8,7 @@ import Svg, {
   Text,
   TSpan,
 } from 'react-native-svg';
-import {IBodyParts} from './interfaces/IBodyParts';
+import {IBodyParts} from '../interfaces/IBodyParts';
 
 interface IMuscles {
   sternocleido: boolean;
@@ -24,7 +24,7 @@ interface IMuscles {
   trapezius: boolean;
 }
 
-const BodyBack: React.FC<any> = props => {
+const BodyBack: React.FC = () => {
   const [muscles, setMuscles] = React.useState<IMuscles>({
     sternocleido: false,
     serratus: false,
@@ -227,12 +227,7 @@ const BodyBack: React.FC<any> = props => {
     setMuscles(oldState => ({...oldState, [muscle]: !oldState[muscle]}));
 
   return (
-    <Svg
-      width={389}
-      height={398}
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}>
+    <Svg width={389} height={398} fill="none">
       <G fill="#D6D9E0">
         <Path d="M143.017 146.334c3.983 12.265 8.425 12.725 13.327 6.286.459.46.613 18.55-3.064 26.676-3.676 8.278-7.965 24.529-7.965 31.275 0 8.125-11.335.306-10.723-1.533 0 0 2.911-12.878 2.451-17.324-1.225-12.572.766-46.3 5.974-45.38Z" />
         <Path d="M146.847 226.975s-.307-14.258-1.379-13.031c-3.37 3.832-10.263-1.074-11.642-3.067l-1.991 2.147-4.136 5.059c-.459 2.453-1.072 4.599-2.144 6.286.459 0-.919 5.059-.46 5.212 1.072.613 3.217-1.84 3.37-3.526.153-1.686.919-4.753 1.991-4.753.613 0 1.073 0 1.379.154-.306 1.993-.459 4.292-.613 6.592.613.153-1.685 11.192-.153 14.258 1.532 3.066 14.399-1.993 15.318-3.986 1.073-1.993-.153-11.039.46-11.345ZM173.193 351.462c3.217 15.638 4.749 30.509 3.983 44.613 2.145 1.533 4.595 1.073 7.2 0-2.911-13.951-2.605-28.975 0-44.613-3.983.92-7.813.92-11.183 0ZM163.849 214.25c-1.379 0-6.28 57.951 5.361 74.815 2.604-19.317 4.136-37.407 3.217-51.512-2.144-.307-7.199-23.303-8.578-23.303Z" />

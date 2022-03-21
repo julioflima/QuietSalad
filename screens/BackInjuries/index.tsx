@@ -1,13 +1,9 @@
 import {NavigationContext} from '@react-navigation/native';
-import React, {ReactNode, useContext, useEffect} from 'react';
-import {Text} from 'react-native';
+import React, {useContext, useEffect} from 'react';
+import BodyBack from '../../components/BodyBack';
 import {Container} from './styles';
 
-interface BackInjuriesProps {
-  children: ReactNode;
-}
-
-function BackInjuries({children}: BackInjuriesProps) {
+function BackInjuries() {
   const navigation = useContext(NavigationContext);
 
   useEffect(() => {
@@ -16,8 +12,7 @@ function BackInjuries({children}: BackInjuriesProps) {
 
   return (
     <Container>
-      <Text>BackInjuries</Text>
-      {children}
+      <BodyBack />
     </Container>
   );
 }
