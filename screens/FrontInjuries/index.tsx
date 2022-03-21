@@ -10,6 +10,7 @@ import {Container} from './Styles';
 
 function FrontInjuries() {
   const navigation = useContext(NavigationContext);
+  const [value, setValue] = React.useState(0);
 
   useEffect(() => {
     navigation?.navigate('BodyFront');
@@ -23,9 +24,9 @@ function FrontInjuries() {
         Is there any area I should be more cautious about? All my workouts will
         be built with this in mind.
       </H4>
-      <BodyFront />
+      <BodyFront indexGradientSlider={value} />
       <H5>Range of Severity</H5>
-      <SliderUI />
+      <SliderUI stateValue={[value, setValue]} />
       <ButtonUI>Next</ButtonUI>
       <ButtonUI type="secondary">Skip</ButtonUI>
     </Container>

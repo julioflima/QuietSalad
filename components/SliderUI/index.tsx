@@ -1,10 +1,13 @@
 import {Slider} from '@miblanchard/react-native-slider';
 import React, {Dispatch} from 'react';
 import {View} from 'react-native';
+import {gradientSlider} from '../../constants/gradient';
 import {customStyles4, trackMarkStyles} from './Styles';
 import Thumb from './Thumb';
 
-interface ISliderUI {}
+interface ISliderUI {
+  stateValue: [number, Dispatch<number>];
+}
 
 const SliderContainer = (props: {
   children: React.ReactElement;
@@ -46,17 +49,17 @@ const SliderContainer = (props: {
   return <>{renderChildren()}</>;
 };
 
-function SliderUI({}: ISliderUI) {
-  const [value, setValue] = React.useState(0);
+function SliderUI({stateValue}: ISliderUI) {
+  const [value, setValue] = stateValue;
 
   return (
     <SliderContainer stateValue={[value, setValue]}>
       <Slider
         animateTransitions
-        maximumValue={20}
+        maximumValue={9}
         minimumValue={0}
         step={1}
-        minimumTrackTintColor="#00E0D5"
+        minimumTrackTintColor={gradientSlider[value].stop}
         renderThumbComponent={() => <Thumb index={value} />}
         trackStyle={customStyles4.track}
       />

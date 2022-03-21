@@ -1,5 +1,5 @@
-export interface IBodyParts<T> {
-  id: keyof T;
+export interface IBodyEnabledPart<T> {
+  id: T;
   paths: {
     d: string;
   }[];
@@ -13,4 +13,9 @@ export interface IBodyParts<T> {
       d: string;
     }[];
   };
+}
+
+export interface IBodyParts {
+  enabled: IBodyEnabledPart<string>[];
+  disabled: string[];
 }
