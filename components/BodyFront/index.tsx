@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {View} from 'react-native';
 import Svg, {G, Path, Text, TSpan} from 'react-native-svg';
-import {IBodyParts} from '../interfaces/IBodyParts';
+import {IBodyParts} from '../../interfaces/IBodyParts';
+import {Container} from './styles';
 
 interface IMuscles {
   deltoidTwo: boolean;
@@ -162,7 +162,7 @@ const BodyFront: React.FC = () => {
     setMuscles(oldState => ({...oldState, [muscle]: !oldState[muscle]}));
 
   return (
-    <View style={{transform: [{scale: 0.8}]}}>
+    <Container>
       <Svg width={422} height={376} fill="none">
         <G fill="#D6D9E0">
           <Path d="M223.361 19.544c0 10.702-7.755 33.813-17.372 33.813s-17.527-23.111-17.527-33.813C188.462 8.84 196.217 0 205.834 0s17.527 8.686 17.527 19.544Z" />
@@ -208,7 +208,7 @@ const BodyFront: React.FC = () => {
           ))}
         </G>
       </Svg>
-    </View>
+    </Container>
   );
 };
 

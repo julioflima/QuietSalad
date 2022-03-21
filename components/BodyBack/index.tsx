@@ -8,7 +8,7 @@ import Svg, {
   Text,
   TSpan,
 } from 'react-native-svg';
-import {IBodyParts} from '../interfaces/IBodyParts';
+import {IBodyParts} from '../../interfaces/IBodyParts';
 
 interface IMuscles {
   sternocleido: boolean;

@@ -5,13 +5,14 @@ import ButtonUI from '../../components/ButtonUI';
 import H1 from '../../components/H1';
 import H4 from '../../components/H4';
 import H5 from '../../components/H5';
+import SliderUI from '../../components/SliderUI';
 import {Container} from './Styles';
 
 function FrontInjuries() {
   const navigation = useContext(NavigationContext);
 
   useEffect(() => {
-    navigation?.navigate('BodyBack');
+    navigation?.navigate('BodyFront');
   }, [navigation]);
 
   return (
@@ -24,8 +25,9 @@ function FrontInjuries() {
       </H4>
       <BodyFront />
       <H5>Range of Severity</H5>
-      <ButtonUI type="secondary">Next</ButtonUI>
-      <ButtonUI>Skip</ButtonUI>
+      <SliderUI />
+      <ButtonUI>Next</ButtonUI>
+      <ButtonUI type="secondary">Skip</ButtonUI>
     </Container>
   );
 }
