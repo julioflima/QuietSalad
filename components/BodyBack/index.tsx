@@ -1,10 +1,9 @@
 import * as React from 'react';
-import {IBodyEnabledPart, IBodyParts} from '../../interfaces/IBodyParts';
+import {IBodyEnabledPart} from '../../interfaces/IBodyParts';
 import BodyParts from '../BodyParts';
 
 interface IBodyFront {
   indexGradientSlider: number;
-  bodyParts: IBodyParts;
 }
 
 const BodyBack: React.FC<IBodyFront> = ({indexGradientSlider = 0}) => {
@@ -204,6 +203,7 @@ const BodyBack: React.FC<IBodyFront> = ({indexGradientSlider = 0}) => {
     <BodyParts
       indexGradientSlider={indexGradientSlider}
       bodyParts={{enabled: bodyPartsEnabled, disabled: bodyPartsDisabled}}
+      left={5}
     />
   );
 };

@@ -152,6 +152,7 @@ const BodyFront: React.FC<IBodyFront> = ({indexGradientSlider = 0}) => {
     <BodyParts
       indexGradientSlider={indexGradientSlider}
       bodyParts={{enabled: bodyPartsEnabled, disabled: bodyPartsDisabled}}
+      left={-35}
     />
   );
 };

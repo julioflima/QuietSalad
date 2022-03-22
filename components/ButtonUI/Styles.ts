@@ -1,34 +1,34 @@
 import styled from 'styled-components/native';
 
-const Container = styled.TouchableOpacity`
+export const Primary = styled.Pressable`
   width: 100%;
   height: 50px;
   border-radius: 16px;
-`;
-
-export const ContainerMargin = styled.View`
-  margin-top: 10px;
-`;
-
-export const Primary = styled(Container)`
   background-color: #018abe;
   color: #fff;
+  flex-direction: row;
+  align-items: center;
 `;
 
-export const Secondary = styled(Container)`
+export const Secondary = styled.Pressable`
+  width: 100%;
+  height: 50px;
+  border-radius: 16px;
+  flex-direction: row;
+  align-items: center;
   background-color: transparent;
   color: #fff;
 `;
 
-export const ContainerView = styled(Container)`
+export const ContainerMargin = styled.View`
   flex: 1;
-  flex-direction: row;
-  align-items: center;
+  margin-top: 10px;
 `;
 
 export const TextButtonPrimary = styled.Text`
   display: flex;
   flex: 1;
+  flex-direction: column;
   font-size: 16px;
   font-weight: 500;
   color: #fff;
@@ -38,7 +38,9 @@ export const TextButtonPrimary = styled.Text`
 export const TextButtonSecondary = styled.Text`
   display: flex;
   flex: 1;
+  flex-direction: column;
   font-size: 16px;
+  font-weight: 500;
   color: #00e0d5;
   text-align: center;
 `;

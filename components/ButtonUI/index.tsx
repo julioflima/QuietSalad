@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   ContainerMargin,
-  ContainerView,
   Primary,
   Secondary,
   TextButtonPrimary,
@@ -19,15 +18,11 @@ function ButtonUI({children, onPress, type = 'primary'}: IButtonUI) {
     <ContainerMargin>
       {type === 'primary' ? (
         <Primary onPress={onPress}>
-          <ContainerView>
-            <TextButtonPrimary>{children}</TextButtonPrimary>
-          </ContainerView>
+          <TextButtonPrimary>{children}</TextButtonPrimary>
         </Primary>
       ) : (
         <Secondary onPress={onPress}>
-          <ContainerView>
-            <TextButtonSecondary>{children}</TextButtonSecondary>
-          </ContainerView>
+          <TextButtonSecondary>{children}</TextButtonSecondary>
         </Secondary>
       )}
     </ContainerMargin>

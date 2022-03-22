@@ -56,7 +56,7 @@ function SliderUI({stateValue}: ISliderUI) {
     <SliderContainer stateValue={[value, setValue]}>
       <Slider
         animateTransitions
-        maximumValue={9}
+        maximumValue={gradientSlider.length - 1}
         minimumValue={0}
         step={1}
         minimumTrackTintColor={gradientSlider[value].stop}

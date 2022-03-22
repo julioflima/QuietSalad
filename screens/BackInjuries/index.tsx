@@ -1,18 +1,21 @@
 import {NavigationContext} from '@react-navigation/native';
-import React, {useContext, useEffect} from 'react';
+import React, {useCallback, useContext} from 'react';
 import BodyBack from '../../components/BodyBack';
 import ButtonUI from '../../components/ButtonUI';
 import H1 from '../../components/H1';
 import H4 from '../../components/H4';
 import H5 from '../../components/H5';
-import {Container} from './styles';
+import SliderUI from '../../components/SliderUI';
+import {ButtonsContainer, Container} from './Styles';
 
-function BackInjuries() {
+function FrontInjuries() {
   const navigation = useContext(NavigationContext);
+  const [value, setValue] = React.useState(0);
 
-  useEffect(() => {
-    navigation?.navigate('BodyBack');
-  }, [navigation]);
+  const onSkipHandler = useCallback(
+    () => navigation?.navigate('BodyBack'),
+    [navigation],
+  );
 
   return (
     <Container>
@@ -22,12 +25,17 @@ function BackInjuries() {
         Is there any area I should be more cautious about? All my workouts will
         be built with this in mind.
       </H4>
-      <BodyBack />
+      <BodyBack indexGradientSlider={value} />
       <H5>Range of Severity</H5>
-      <ButtonUI>Next</ButtonUI>
-      <ButtonUI type="secondary">Skip</ButtonUI>
+      <SliderUI stateValue={[value, setValue]} />
+      <ButtonsContainer>
+        <ButtonUI onPress={onSkipHandler}>Next</ButtonUI>
+        <ButtonUI type="secondary" onPress={onSkipHandler}>
+          Skip
+        </ButtonUI>
+      </ButtonsContainer>
     </Container>
   );
 }
 
-export default BackInjuries;
+export default FrontInjuries;

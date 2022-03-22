@@ -1,4 +1,5 @@
 export const gradientSlider = [
+  {start: '#fff', stop: '#fff'},
   {start: '#01DED5', stop: '#01C6CE'},
   {start: '#01e0d6', stop: '#01B8CB'},
   {start: '#01e0d6', stop: '#01AFC8'},
