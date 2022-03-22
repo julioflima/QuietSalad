@@ -16,12 +16,14 @@ interface IBodyPartsProps {
   indexGradientSlider: number;
   left: number;
   bodyParts: IBodyParts;
+  injurieState: [string[], React.Dispatch<React.SetStateAction<string[]>>];
 }
 
 const BodyParts: React.FC<IBodyPartsProps> = ({
   indexGradientSlider = 0,
   bodyParts,
   left,
+  injurieState,
 }) => {
   const bodyIds: readonly string[] = bodyParts.enabled.map(item => item.id);
 
@@ -37,10 +39,23 @@ const BodyParts: React.FC<IBodyPartsProps> = ({
   const bodyPartsEnabled: IBodyEnabledPart<TBodyId>[] = bodyParts.enabled;
   const bodyPartsDisabled: string[] = bodyParts.disabled;
 
+  const [injuries, setInjuries] = injurieState;
   const [muscles, setMuscles] = React.useState<TMuscles>(initialMuscles);
 
-  const handleOnPress = (muscle: keyof TMuscles) =>
+  const handleOnPress = (muscle: keyof TMuscles) => {
+    setInjuries(setOldState => [...setOldState, muscle]);
     setMuscles(oldState => ({...oldState, [muscle]: !oldState[muscle]}));
+  };
+
+  const handleClear = React.useCallback(() => {
+    if (!injuries.length) {
+      setMuscles(initialMuscles);
+    }
+  }, [initialMuscles, injuries.length]);
+
+  React.useEffect(() => {
+    handleClear();
+  }, [handleClear]);
 
   return (
     <Container>

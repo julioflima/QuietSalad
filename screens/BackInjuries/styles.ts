@@ -12,8 +12,4 @@ export const ButtonsContainer = styled.View`
   justify-content: space-between;
   flex-direction: column;
   flex: 1;
-
-  & + & {
-    margin-top: 10px;
-  }
 `;

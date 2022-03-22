@@ -4,9 +4,13 @@ import BodyParts from '../BodyParts';
 
 interface IBodyFront {
   indexGradientSlider: number;
+  musclesState: [string[], React.Dispatch<React.SetStateAction<string[]>>];
 }
 
-const BodyBack: React.FC<IBodyFront> = ({indexGradientSlider = 0}) => {
+const BodyBack: React.FC<IBodyFront> = ({
+  indexGradientSlider = 0,
+  musclesState,
+}) => {
   const bodyPartsEnabled: IBodyEnabledPart<string>[] = [
     {
       id: 'sternocleido',
@@ -203,7 +207,8 @@ const BodyBack: React.FC<IBodyFront> = ({indexGradientSlider = 0}) => {
     <BodyParts
       indexGradientSlider={indexGradientSlider}
       bodyParts={{enabled: bodyPartsEnabled, disabled: bodyPartsDisabled}}
-      left={5}
+      injurieState={musclesState}
+      left={-35}
     />
   );
 };
