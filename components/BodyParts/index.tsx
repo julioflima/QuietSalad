@@ -13,14 +13,14 @@ import {IBodyEnabledPart, IBodyParts} from '../../interfaces/IBodyParts';
 import {Container, Content} from './styles';
 
 interface IBodyPartsProps {
-  indexGradientSlider: number;
+  indexGradientSlider: number[];
   left: number;
   bodyParts: IBodyParts;
   injurieState: [string[], React.Dispatch<React.SetStateAction<string[]>>];
 }
 
 const BodyParts: React.FC<IBodyPartsProps> = ({
-  indexGradientSlider = 0,
+  indexGradientSlider = [0],
   bodyParts,
   left,
   injurieState,
@@ -29,33 +29,22 @@ const BodyParts: React.FC<IBodyPartsProps> = ({
 
   type TBodyId = typeof bodyIds[number];
 
-  const initialMuscles = bodyIds.reduce(
-    (acc, curr) => ({...acc, [curr as TBodyId]: false}),
-    {},
-  );
-
   type TMuscles = {[key in TBodyId]: boolean};
 
   const bodyPartsEnabled: IBodyEnabledPart<TBodyId>[] = bodyParts.enabled;
   const bodyPartsDisabled: string[] = bodyParts.disabled;
 
   const [injuries, setInjuries] = injurieState;
-  const [muscles, setMuscles] = React.useState<TMuscles>(initialMuscles);
 
   const handleOnPress = (muscle: keyof TMuscles) => {
-    setInjuries(setOldState => [...setOldState, muscle]);
-    setMuscles(oldState => ({...oldState, [muscle]: !oldState[muscle]}));
-  };
-
-  const handleClear = React.useCallback(() => {
-    if (!injuries.length) {
-      setMuscles(initialMuscles);
+    if (injuries.includes(muscle)) {
+      return setInjuries(setOldState =>
+        setOldState.filter(item => item !== muscle),
+      );
     }
-  }, [initialMuscles, injuries.length]);
 
-  React.useEffect(() => {
-    handleClear();
-  }, [handleClear]);
+    return setInjuries(setOldState => [...setOldState, muscle]);
+  };
 
   return (
     <Container>
@@ -79,7 +68,7 @@ const BodyParts: React.FC<IBodyPartsProps> = ({
                     key={part.id + 'Paths' + indexPath}
                     d={path.d}
                     fill={
-                      muscles[part.id]
+                      injuries.includes(part.id)
                         ? `url(#${part.id + 'Parts' + 'Grad'})`
                         : '#fff'
                     }
@@ -94,11 +83,11 @@ const BodyParts: React.FC<IBodyPartsProps> = ({
                     y2="100%">
                     <Stop
                       offset="0%"
-                      stopColor={gradientSlider[indexGradientSlider].start}
+                      stopColor={gradientSlider[indexGradientSlider[0]].start}
                     />
                     <Stop
                       offset="100%"
-                      stopColor={gradientSlider[indexGradientSlider].stop}
+                      stopColor={gradientSlider[indexGradientSlider[0]].stop}
                     />
                   </LinearGradient>
                 </Defs>
@@ -108,7 +97,7 @@ const BodyParts: React.FC<IBodyPartsProps> = ({
               <G
                 id={part.id + 'PartsText' + index}
                 key={part.id + 'Text' + String(part.line.paths)}>
-                {muscles[part.id] && (
+                {injuries.includes(part.id) && (
                   <G fill="#018ABE">
                     <Text fontSize={12} fontWeight={500} letterSpacing={0.2}>
                       <TSpan x={part.text.x} y={part.text.y}>

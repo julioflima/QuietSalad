@@ -1,12 +1,13 @@
-import React, {Dispatch} from 'react';
-import {Slider} from 'react-native';
+import {Slider} from '@miblanchard/react-native-slider';
+import React, {Dispatch, FC} from 'react';
 
-const SliderContainer = (props: {
+interface ISliderContainer {
   children: React.ReactElement;
-  trackMarks?: Array<number>;
-  stateValue: [number, Dispatch<number>];
-}) => {
-  const {trackMarks, stateValue} = props;
+  stateValue: [number[], Dispatch<number[]>];
+}
+
+const SliderContainer: FC<ISliderContainer> = props => {
+  const {stateValue} = props;
   const [value, setValue] = stateValue;
 
   const renderChildren = () => {
@@ -14,7 +15,6 @@ const SliderContainer = (props: {
       if (!!child && child.type === Slider) {
         return React.cloneElement(child, {
           onValueChange: setValue,
-          trackMarks,
           value,
         });
       }

@@ -3,12 +3,12 @@ import {IBodyEnabledPart} from '../../interfaces/IBodyParts';
 import BodyParts from '../BodyParts';
 
 interface IBodyFront {
-  indexGradientSlider: number;
+  indexGradientSlider: number[];
   musclesState: [string[], React.Dispatch<React.SetStateAction<string[]>>];
 }
 
 const BodyFront: React.FC<IBodyFront> = ({
-  indexGradientSlider = 0,
+  indexGradientSlider = [0],
   musclesState,
 }) => {
   const bodyPartsEnabled: IBodyEnabledPart<string>[] = [

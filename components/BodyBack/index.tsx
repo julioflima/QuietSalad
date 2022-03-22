@@ -3,12 +3,12 @@ import {IBodyEnabledPart} from '../../interfaces/IBodyParts';
 import BodyParts from '../BodyParts';
 
 interface IBodyFront {
-  indexGradientSlider: number;
+  indexGradientSlider: number[];
   musclesState: [string[], React.Dispatch<React.SetStateAction<string[]>>];
 }
 
 const BodyBack: React.FC<IBodyFront> = ({
-  indexGradientSlider = 0,
+  indexGradientSlider = [0],
   musclesState,
 }) => {
   const bodyPartsEnabled: IBodyEnabledPart<string>[] = [
@@ -95,7 +95,7 @@ const BodyBack: React.FC<IBodyFront> = ({
       line: {paths: [{d: 'M179.5 211L116 246'}]},
     },
     {
-      id: 'deltoid',
+      id: 'deltoidBack',
       paths: [
         {
           d: 'M147.306 115.365C147.306 115.365 171.509 97.7348 171.202 92.0624C170.896 86.3899 162.318 88.8429 159.714 87.4631C157.11 86.0833 158.182 85.1635 158.182 85.1635C146.54 87.1565 143.783 98.3481 147.306 115.365Z',

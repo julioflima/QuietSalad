@@ -1,13 +1,12 @@
 import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
-import 'react-native-gesture-handler';
 import {InjuriesProvider} from './contexts/InjuriesContext';
 import BackInjuries from './screens/BackInjuries';
 import FrontInjuries from './screens/FrontInjuries';
-import Result from './screens/Result';
+import InjuriesResult from './screens/InjuriesResult';
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
@@ -16,7 +15,7 @@ const App = () => {
         <Stack.Navigator>
           <Stack.Screen name="BodyFront" component={FrontInjuries} />
           <Stack.Screen name="BodyBack" component={BackInjuries} />
-          <Stack.Screen name="Result" component={Result} />
+          <Stack.Screen name="InjuriesResult" component={InjuriesResult} />
         </Stack.Navigator>
       </NavigationContainer>
     </InjuriesProvider>
